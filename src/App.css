@@ -13,8 +13,9 @@
   }
 }
 
+/* Header Styling */
 .App-header {
-  background-color: #282c34;
+  background-color: #8eaeee;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +36,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.user-icon {
+  text-align: right;
+  height: 30px;
+  width: 30px;
 }

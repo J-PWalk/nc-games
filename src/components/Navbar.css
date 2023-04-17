@@ -1,0 +1,23 @@
+.navbar {
+    background-color: rgba(220, 205, 5, 0.9);
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list-item a {
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem;
+  }
+  
+  .nav-list-item a:hover {
+    text-decoration: underline;
+  }
+  

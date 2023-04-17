@@ -1,0 +1,24 @@
+
+    #review-list {
+    list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .each-review {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+    }
+  
+    .review-image {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }

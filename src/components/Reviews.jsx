@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-
+import { fetchReviews } from "../api"; 
 
 function Reviews() {
   const [isLoading, setIsLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
-  
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://nc-jpportfolio.onrender.com/api/reviews`)
-      .then((response) => {
-        return response.json();
-      })
+    fetchReviews() 
       .then((data) => {
-        setReviews(data.reviews);
+        setReviews(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
         setIsLoading(false);
       });
   }, []);

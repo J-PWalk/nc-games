@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchReviews } from "../api"; 
+
+import * as api from "../api";
+import "./Reviews.css";
 
 function Reviews() {
-  const [isLoading, setIsLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetchReviews() 
+    api
+      .fetchReviews()
       .then((data) => {
         setReviews(data);
         setIsLoading(false);
@@ -27,10 +30,9 @@ function Reviews() {
           {reviews.map((reviews) => {
             return (
               <li className="each-review" key={reviews.review_id}>
+                Title: {reviews.title}
                 <br />
                 Author: {reviews.owner}
-                <br />
-                Title: {reviews.title}
                 <br />
                 Designer: {reviews.designer}
                 <br />
@@ -42,15 +44,15 @@ function Reviews() {
                 <br />
                 Category: {reviews.category}
                 <br />
-                <br />
                 Created: {reviews.created_at}
-                <br />
                 <br />
                 Votes: {reviews.votes}
                 <br />
-                <br />
                 Comments: {reviews.comment_count}
                 <br />
+                <Link to={`/reviews/${reviews.review_id}`}>
+                  <button className="button"> See This Review! </button>
+                </Link>
               </li>
             );
           })}

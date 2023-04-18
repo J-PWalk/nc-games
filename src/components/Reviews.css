@@ -1,24 +1,28 @@
+#review-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: space-between;
+  align-items: center;
+}
 
-    #review-list {
-    list-style: none;
-      text-align: center;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+.each-review {
+  list-style: none;
+  margin: 20px;
+}
 
-    .each-review {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 10px;
-    }
-  
-    .review-image {
-      max-width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+.review-image {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px black;
+}
+.review {
+  list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: space-between;
+  align-items: center;
+}

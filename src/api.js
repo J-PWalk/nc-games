@@ -10,10 +10,6 @@ export const fetchReviews = () => {
     .then((response) => {
       return response.data.reviews;
     })
-    .catch((error) => {
-      console.error("Error fetching reviews:", error);
-      throw error;
-    });
 };
 
 export const fetchReview = (review_id) => {
@@ -22,8 +18,4 @@ export const fetchReview = (review_id) => {
       .then((response) => {
         return response.data.review;
       })
-      .catch((error) => {
-        console.error(`Error fetching review with that Id ${review_id}:`, error);
-        throw error;
-      });
   };

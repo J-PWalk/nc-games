@@ -7,6 +7,7 @@ function ReviewCard() {
   const { review_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [review, setReview] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchReviewData = async () => {
@@ -16,7 +17,8 @@ function ReviewCard() {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
-        console.error(`Error fetching review with ID ${review_id}:`, error);
+        setError(error);
+        console.error(`Error fetching review ${review_id}:`, error);
       }
     };
 
@@ -26,6 +28,11 @@ function ReviewCard() {
   if (isLoading) {
     return <p>Page Loading...</p>;
   }
+
+  if (error) {
+    return <p>Error: {error.message}</p>; 
+  }
+  
 
   return (
     <main>

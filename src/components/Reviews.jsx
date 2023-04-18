@@ -7,6 +7,7 @@ import "./Reviews.css";
 function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     api
@@ -17,12 +18,18 @@ function Reviews() {
       })
       .catch((error) => {
         setIsLoading(false);
+        setError(error);
       });
   }, []);
 
   if (isLoading) {
     return <p>Page Loading...</p>;
   }
+
+  if (error) {
+    return <p>Error: {error.message}</p>; 
+  }
+  
   return (
     <main>
       <h3 className="App-header">

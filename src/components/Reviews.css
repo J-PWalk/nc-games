@@ -25,4 +25,14 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-content: space-between;
   align-items: center;
+  background-color: #b85b42;
+  color: #f2f5ef;
+  margin: 50px;
+}
+
+.author {
+  text-decoration: underline; 
+  display: inline-block;
+  padding: 5px 10px; 
+  background-color: lightgray; 
 }

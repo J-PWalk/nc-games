@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import * as api from "../api";
 import "./Reviews.css";
+
 
 function ReviewCard() {
   const { review_id } = useParams();
@@ -58,8 +59,9 @@ function ReviewCard() {
             <br />
             Votes: {review.votes}
             <br />
-            Comments: {review.comment_count}
-            <br />
+            <Link to={`/reviews/${review.review_id}/comments`}>
+                  <button className="button"> Comments </button>
+                </Link>
           </li>
         </ul>
       </h3>

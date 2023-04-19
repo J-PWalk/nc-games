@@ -20,10 +20,10 @@ export const fetchReview = (review_id) => {
       })
   };
 
-  export const fetchComments = (review_id) => {
+  export const fetchComments = (review_id, limit = 2) => {
     return ncGamesAPI
-      .get(`/reviews/${review_id}/comments`)
+      .get(`/reviews/${review_id}/comments?limit=${limit}`)
       .then((response) => {
-        return response.data
-      })
+        return response.data.comments;
+      });
   };

@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as api from "../api";
 import "./Reviews.css";
-
+import Loader from "../components/Loader";
 
 function ReviewCard() {
   const { review_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [review, setReview] = useState();
+  const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -23,48 +24,86 @@ function ReviewCard() {
       }
     };
 
+    const fetchCommentsData = async () => {
+      try {
+        const data = await api.fetchComments(review_id, 2);
+        setComments(data);
+      } catch (error) {
+        console.error(
+          `Error fetching comments for review ${review_id}:`,
+          error
+        );
+      }
+    };
+
     fetchReviewData();
+    fetchCommentsData();
   }, [review_id]);
 
   if (isLoading) {
-    return <p>Page Loading...</p>;
+    return <Loader />;
   }
 
   if (error) {
-    return <p>Error: {error.message}</p>; 
+    return <p>Error: {error.message}</p>;
   }
-  
 
   return (
-    <main>
-      <h3>
-        <ul id="review">
-          <li className="review" key={review.review_id}>
-            <br />
-            Author: {review.owner}
-            <br />
-            Title: {review.title}
-            <br />
-            Designer: {review.designer}
-            <br />
-            <img
-              className="review-image"
-              src={review.review_img_url}
-              alt={review.title}
-            />
-            <br />
-            Category: {review.category}
-            <br />
-            Created: {review.created_at}
-            <br />
-            Votes: {review.votes}
-            <br />
-            <Link to={`/reviews/${review.review_id}/comments`}>
-                  <button className="button"> Comments </button>
-                </Link>
-          </li>
-        </ul>
-      </h3>
+    <main className="review-card">
+      <div className="review-details">
+        <div className="review-info">
+          <strong>Author: {review.owner}</strong>
+          <br />
+          Title: {review.title}
+          <br />
+          Designer: {review.designer}
+          <br />
+          Category: {review.category}
+        </div>
+        <img
+          className="review-image"
+          src={review.review_img_url}
+          alt={review.title}
+        />
+      </div>
+      <div className="review-body">
+        <h2>{review.title}</h2>
+        <p>{review.review_body}</p>
+        <p className="created-at">
+          Posted:{" "}
+          {new Date(review.created_at).toLocaleDateString()},{" "}
+          {new Date(review.created_at).toLocaleTimeString()}
+        </p>
+        <p className="votes">Likes: {review.votes}</p>
+        <u><h3>Comments:</h3></u>
+        {comments.length === 0 ? (
+          <p>Be the first to comment!</p>
+        ) : (
+          <ul className="review-card__comments">
+            {comments.slice(0, 2).map((comment) => (
+              <li key={comment.comment_id}>
+                <p>
+                  <u>
+                    <strong>Author:</strong> {comment.author}
+                  </u>
+                </p>
+                <p>{comment.body}</p>
+                <p className="created-at">
+                  Comment made:{" "}
+                  {new Date(comment.created_at).toLocaleDateString()},{" "}
+                  {new Date(comment.created_at).toLocaleTimeString()}
+                </p>
+                <p>
+                  <span className="votes"> Likes: {comment.votes}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+        <Link to={`/reviews/${review.review_id}/comments`}>
+          <button className="button"> All Comments </button>
+        </Link>
+      </div>
     </main>
   );
 }

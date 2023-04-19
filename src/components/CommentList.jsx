@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import Loader from '../components/Loader'
 import * as api from '../api';
+import "./Reviews.css";
 
 function CommentList() {
   const { review_id } = useParams();
@@ -12,7 +14,7 @@ function CommentList() {
     const fetchCommentsData = async () => {
       try {
         const data = await api.fetchComments(review_id);
-        setComments(data.comments);
+        setComments(data);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -25,7 +27,7 @@ function CommentList() {
   }, [review_id]);
 
   if (isLoading) {
-    return <p>Comments Loading...</p>;
+    return <Loader />;
   }
 
   if (error) {
@@ -34,21 +36,26 @@ function CommentList() {
 
   return (
     <div>
-      <h3>Welcome to the Comments</h3>
-      <ul className="review">
-        {comments?.map((comment) => (
-          <li key={comment.comment_id}>
-            <p>
-              <strong>Author: {comment.author}</strong>
-            </p>
-            <p>Body: {comment.body}</p>
-            <p>Created at: {comment.created_at}</p>
-            <p>Votes: {comment.votes}</p>
-          </li>
-        ))}
+      <br />
+      <Link to={`/reviews/${review_id}`}>
+        <button className="button"> Back to Review! </button>
+      </Link>
+      <h3>   Comments Section</h3>
+      <ul>
+      {comments.map((comment) => (
+  <li className="comments" key={comment.comment_id}>
+    <p>
+      <u><strong>Author:</strong> {comment.author}</u>
+    </p>
+    <p>{comment.body}</p>
+    <p className="created-at">Commented: {new Date(comment.created_at).toLocaleDateString()}, {new Date(comment.created_at).toLocaleTimeString()}</p>
+    <p className="votes">Likes: {comment.votes} </p>
+  </li>
+))}
       </ul>
     </div>
   );
 }
+
 
 export default CommentList;

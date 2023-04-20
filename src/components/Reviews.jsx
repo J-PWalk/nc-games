@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Loader from '../components/Loader'
 import * as api from "../api";
 import "./Reviews.css";
 
-function Reviews() {
+function Reviews({ comments }) {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,7 +23,7 @@ function Reviews() {
   }, []);
 
   if (isLoading) {
-    return <p>Page Loading...</p>;
+    return <Loader />;
   }
 
   if (error) {
@@ -37,11 +37,11 @@ function Reviews() {
           {reviews.map((reviews) => {
             return (
               <li className="each-review" key={reviews.review_id}>
-                Title: {reviews.title}
+              {reviews.title}
                 <br />
                 Author: {reviews.owner}
                 <br />
-                Designer: {reviews.designer}
+                Game Designer: {reviews.designer}
                 <br />
                 <img
                   className="review-image"
@@ -53,8 +53,7 @@ function Reviews() {
                 <br />
                 Created: {reviews.created_at}
                 <br />
-                Votes: {reviews.votes}
-                <br />
+                <p className="votes">Likes: {reviews.votes}</p>
                 Comments: {reviews.comment_count}
                 <br />
                 <Link to={`/reviews/${reviews.review_id}`}>

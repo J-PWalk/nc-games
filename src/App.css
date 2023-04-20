@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Roboto Slab', serif;
 }
 
 .App-logo {
@@ -17,9 +20,10 @@
 .header {
   background-color: #b85b42;
   color: #f2f5ef;
+  float:  center;
 }
+
 .App-header {
-  background-color: #8eaca7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,7 +31,22 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #f2f5ef;
+  font-family: 'Roboto Slab', serif;
 }
+/* Logo within Header styling */
+.logo-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  max-width: 150px;
+  max-height: 150px;
+  float: left;
+  margin-right: 1rem;
+}
+
 
 .App-link {
   color: #61dafb;
@@ -42,12 +61,20 @@
   }
 }
 
-.user-icon {
-  text-align: right;
-  height: 30px;
-  width: 30px;
-}
-
+/* Button Styling */
 .button {
   background-color: #e7c836;
+  font-family: 'Roboto Slab', serif;
 }
+
+.button:hover {
+  background-color: #b85b42;
+  color: #f2f5ef;
+}
+
+/* Likes highlighting */
+.votes {
+  color: #2a2727;
+  font-family: 'Roboto Slab', serif;
+}
+

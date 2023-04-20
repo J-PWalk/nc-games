@@ -19,3 +19,11 @@ export const fetchReview = (review_id) => {
         return response.data.review;
       })
   };
+
+  export const fetchComments = (review_id, limit = 2) => {
+    return ncGamesAPI
+      .get(`/reviews/${review_id}/comments?limit=${limit}`)
+      .then((response) => {
+        return response.data.comments;
+      });
+  };

@@ -72,9 +72,13 @@
   color: #f2f5ef;
 }
 
-/* Likes highlighting */
+/* Likes*/
 .votes {
   color: #2a2727;
   font-family: 'Roboto Slab', serif;
+}
+
+.votes button {
+  margin-left: 10px;
 }
 

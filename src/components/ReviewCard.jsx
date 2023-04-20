@@ -43,9 +43,11 @@ function ReviewCard() {
 
   const handleLikeClick = async () => {
     try {
+      setReview((prevState) => ({ ...prevState, votes: prevState.votes + 1 }));
       const updatedReview = await api.patchReviewLikes(review.review_id);
       setReview(updatedReview);
     } catch (error) {
+      setReview((prevState) => ({ ...prevState, votes: prevState.votes - 1 }));
       console.error(`Error updating review likes:`, error);
     }
   };

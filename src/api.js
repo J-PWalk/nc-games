@@ -27,3 +27,15 @@ export const fetchReview = (review_id) => {
         return response.data.comments;
       });
   };
+
+  export const fetchCategories = () => {
+    return ncGamesAPI.get("/categories").then((response) => {
+      return response.data.categories;
+    });
+  };
+
+  export const fetchReviewsByCategory = (category) => {
+    return ncGamesAPI.get(`/reviews?category=${category}`).then((response) => {
+      return response.data.reviews;
+    });
+  };

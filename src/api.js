@@ -27,3 +27,10 @@ export const fetchReview = (review_id) => {
         return response.data.comments;
       });
   };
+
+  export const patchReviewLikes = async (reviewId) => {
+    const response = await ncGamesAPI.patch(`/reviews/${reviewId}`, { inc_votes: 1 });
+    return response.data.review;
+  };
+  
+  

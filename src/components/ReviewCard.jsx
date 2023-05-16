@@ -15,6 +15,7 @@ function ReviewCard() {
     const fetchReviewData = async () => {
       try {
         const data = await api.fetchReview(review_id);
+        console.log("Review data:", data);
         setReview(data);
         setIsLoading(false);
       } catch (error) {
@@ -39,6 +40,17 @@ function ReviewCard() {
     fetchReviewData();
     fetchCommentsData();
   }, [review_id]);
+
+  const handleLikeClick = async () => {
+    try {
+      setReview((prevState) => ({ ...prevState, votes: prevState.votes + 1 }));
+      const updatedReview = await api.patchReviewLikes(review.review_id);
+      setReview(updatedReview);
+    } catch (error) {
+      setReview((prevState) => ({ ...prevState, votes: prevState.votes - 1 }));
+      console.error(`Error updating review likes:`, error);
+    }
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -74,7 +86,8 @@ function ReviewCard() {
           {new Date(review.created_at).toLocaleDateString()},{" "}
           {new Date(review.created_at).toLocaleTimeString()}
         </p>
-        <p className="votes">Likes: {review.votes}</p>
+       
+        <p className="votes">Likes: {review.votes}    <button onClick={handleLikeClick}>👍</button></p>
         <u><h3>Comments:</h3></u>
         {comments.length === 0 ? (
           <p>Be the first to comment!</p>

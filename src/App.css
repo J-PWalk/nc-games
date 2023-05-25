@@ -78,3 +78,23 @@
   font-family: 'Roboto Slab', serif;
 }
 
+.footer {
+  background-color: #b85b42;
+  color: #f2f5ef;
+  float:  center;
+}
+
+.App-footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #f2f5ef;
+  font-family: 'Roboto Slab', serif;
+}
+.app-logo {
+  height: 2.5em;
+  vertical-align: middle;
+}

@@ -21,6 +21,10 @@
   text-decoration: underline;
 }
 
+.nav-list-item .active {
+  font-weight: bold;
+}
+
 .user-dropdown {
   display: flex;
   align-items: center;
@@ -30,17 +34,20 @@
 }
 
 .user-icon {
+  background-color: white;
+  border-radius:20px;
   height: 30px;
   width: 30px;
 }
 
 .username {
-  margin-left: auto;
+  margin-left: 5px;
 }
 
 .dropdown-menu {
-  position:absolute;
-  top: 100%;
+  position: absolute;
+  top: calc( 50% );
+  left: 0;
   background-color: white;
   border: 1px solid black;
   padding: 0.5rem;
@@ -48,8 +55,30 @@
   flex-direction: column;
   z-index: 1;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+  list-style-type: none;
 }
 
-.user-dropdown:hover .dropdown-menu {
+.user-dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
   visibility: visible;
+  opacity: 1;
 }
+
+.dropdown-menu li {
+  padding: 0.5rem 0;
+}
+
+.dropdown-menu li:first-child {
+  font-weight: bold;
+}
+
+.dropdown-menu li:last-child {
+  margin-top: auto;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f5f5f5;
+}
+

@@ -1,0 +1,23 @@
+.about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f8f8f8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .about-header {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 24px;
+  }
+  
+  .about-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 16px;
+  }
+  

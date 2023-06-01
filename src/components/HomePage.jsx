@@ -40,7 +40,7 @@ function Homepage() {
 
           return (
             <div className="review-card" key={review.review_id}>
-              <h2>{review.title}</h2>
+              <h2 className = "review-title">{review.title}</h2>
               <div className="review-details">
                 <div>
                   <p>Author: {review.owner}</p>

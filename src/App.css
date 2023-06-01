@@ -63,6 +63,7 @@
 .button {
   background-color: #e7c836;
   font-family: "Roboto Slab", serif;
+  box-shadow: 2px 2px #2a2727;
 }
 
 .button:hover {
@@ -78,6 +79,7 @@
 
 .votes button {
   margin-left: 10px;
+  font-size: 25px;
 }
 
 /* Footer Styling */

@@ -82,13 +82,16 @@ function ReviewCard() {
         <h2>{review.title}</h2>
         <p>{review.review_body}</p>
         <p className="created-at">
-          Posted:{" "}
-          {new Date(review.created_at).toLocaleDateString()},{" "}
+          Posted: {new Date(review.created_at).toLocaleDateString()},{" "}
           {new Date(review.created_at).toLocaleTimeString()}
         </p>
-       
-        <p className="votes">Likes: {review.votes}    <button onClick={handleLikeClick}>👍</button></p>
-        <u><h3>Comments:</h3></u>
+
+        <p className="votes">
+          Likes: {review.votes} <button onClick={handleLikeClick}>❤️</button>
+        </p>
+        <u>
+          <h3>Comments:</h3>
+        </u>
         {comments.length === 0 ? (
           <p>Be the first to comment!</p>
         ) : (

@@ -71,6 +71,10 @@
   padding: 20px;
   border-radius: 1rem;
 }
+.review-title{
+  color: #b85b42;
+  text-shadow: 2px 2px 2px black;
+}
 
 .each-review {
   list-style: none;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as api from '../api';
 import Loader from './Loader';
-import './Reviews.css'; 
+import './Reviews.css';
 
 function Homepage() {
   const [reviews, setReviews] = useState([]);
@@ -35,31 +35,35 @@ function Homepage() {
     <main>
       <h1>Welcome to my board game review site!</h1>
       <div className="review-grid">
-        {reviews.map((review) => (
-          <div className="review-card" key={review.review_id}>
-            <h2>{review.title}</h2>
-            <div className="review-details">
-              <div>
-                <p>Author: {review.owner}</p>
-                <p>Game Designer: {review.designer}</p>
-                <p>Category: {review.category}</p>
+        {reviews.map((review) => {
+          const formattedDate = new Date(review.created_at).toLocaleString();
+
+          return (
+            <div className="review-card" key={review.review_id}>
+              <h2>{review.title}</h2>
+              <div className="review-details">
+                <div>
+                  <p>Author: {review.owner}</p>
+                  <p>Game Designer: {review.designer}</p>
+                  <p>Category: {review.category}</p>
+                </div>
+                <img
+                  className="review-image"
+                  src={review.review_img_url}
+                  alt={review.title}
+                />
               </div>
-              <img
-                className="review-image"
-                src={review.review_img_url}
-                alt={review.title}
-              />
+              <div className="review-body">
+                <p>Created: {formattedDate}</p>
+                <p className="votes">Likes: {review.votes}</p>
+                <p>Comments: {review.comment_count}</p>
+                <Link to={`/reviews/${review.review_id}`}>
+                  <button className="button">See This Review!</button>
+                </Link>
+              </div>
             </div>
-            <div className="review-body">
-              <p>Created: {review.created_at}</p>
-              <p className="votes">Likes: {review.votes}</p>
-              <p>Comments: {review.comment_count}</p>
-              <Link to={`/reviews/${review.review_id}`}>
-                <button className="button">See This Review!</button>
-              </Link>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </main>
   );

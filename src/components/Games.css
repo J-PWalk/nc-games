@@ -1,0 +1,73 @@
+.games {
+    text-align: center;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 320px;
+    margin: 20px auto;
+  }
+  .cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    cursor: pointer;
+  }
+  
+  .X {
+    color: #c23b22;
+  }
+  
+  .O {
+    color: #3D426B;
+  }
+  
+  .status {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-color: #e7c836;
+    font-family: "Roboto Slab", serif;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #b85b42;
+    color: #f2f5ef;
+  }
+  
+  .games-container {
+    text-align: center;
+  }
+  
+  .games-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .game-item {
+    margin-bottom: 10px;
+  }
+  
+  .game-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+  }
+  
+  .game-item a:hover {
+    color: #b85b42;
+  }

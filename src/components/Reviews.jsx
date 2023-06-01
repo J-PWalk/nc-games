@@ -51,7 +51,7 @@ function Reviews({ comments }) {
                 <br />
                 Category: {reviews.category}
                 <br />
-                Created: {reviews.created_at}
+                Created: {new Date(reviews.created_at).toLocaleString()}
                 <br />
                 <p className="votes">Likes: {reviews.votes}</p>
                 Comments: {reviews.comment_count}

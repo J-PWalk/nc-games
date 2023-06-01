@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import userIcon from "../images/user-pawn-icon.jpeg"
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -45,6 +46,24 @@ const Navbar = () => {
             Categories
           </Link>
         </li>
+        <li className="nav-list-item">
+          <Link
+            to="/games"
+            className={activePage === "/games" ? "active" : ""}
+            onClick={() => handleLinkClick("/games")}
+          >
+            Games
+          </Link>
+        </li>
+        <li className="nav-list-item">
+          <Link
+            to="/about"
+            className={activePage === "/about" ? "active" : ""}
+            onClick={() => handleLinkClick("/about")}
+          >
+            About
+          </Link>
+        </li>
       </ul>
 
       <div
@@ -54,7 +73,7 @@ const Navbar = () => {
       >
         <img
           className="user-icon"
-          src="https://img.icons8.com/material-outlined/512/user--v1.png"
+          src={userIcon}
           alt="user-icon"
         />
         <span className="username">John-Paul</span>

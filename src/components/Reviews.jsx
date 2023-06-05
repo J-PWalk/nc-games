@@ -39,9 +39,9 @@ function Reviews({ comments }) {
               <li className="each-review" key={reviews.review_id}>
               {reviews.title}
                 <br />
-                Author: {reviews.owner}
+                By: {reviews.owner}
                 <br />
-                Game Designer: {reviews.designer}
+                Designer: {reviews.designer}
                 <br />
                 <img
                   className="review-image"
@@ -51,7 +51,7 @@ function Reviews({ comments }) {
                 <br />
                 Category: {reviews.category}
                 <br />
-                Created: {new Date(reviews.created_at).toLocaleString()}
+                Posted: {new Date(reviews.created_at).toLocaleString()}
                 <br />
                 <p className="votes">Likes: {reviews.votes}</p>
                 Comments: {reviews.comment_count}

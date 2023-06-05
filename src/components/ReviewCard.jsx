@@ -64,9 +64,7 @@ function ReviewCard() {
     <main className="review-card">
       <div className="review-details">
         <div className="review-info">
-          <strong>Author: {review.owner}</strong>
-          <br />
-          Title: {review.title}
+          <strong>By: {review.owner}</strong>
           <br />
           Designer: {review.designer}
           <br />
@@ -79,7 +77,7 @@ function ReviewCard() {
         />
       </div>
       <div className="review-body">
-        <h2>{review.title}</h2>
+        <h2 className = "review-title">{review.title}</h2>
         <p>{review.review_body}</p>
         <p className="created-at">
           Posted: {new Date(review.created_at).toLocaleDateString()},{" "}

@@ -43,7 +43,7 @@ function Homepage() {
               <h2 className = "review-title">{review.title}</h2>
               <div className="review-details">
                 <div>
-                  <p>Author: {review.owner}</p>
+                  <p>By: {review.owner}</p>
                   <p>Game Designer: {review.designer}</p>
                   <p>Category: {review.category}</p>
                 </div>
@@ -54,7 +54,7 @@ function Homepage() {
                 />
               </div>
               <div className="review-body">
-                <p>Created: {formattedDate}</p>
+                <p>Posted: {formattedDate}</p>
                 <p className="votes">Likes: {review.votes}</p>
                 <p>Comments: {review.comment_count}</p>
                 <Link to={`/reviews/${review.review_id}`}>
